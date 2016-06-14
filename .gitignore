@@ -1,0 +1,8 @@
+# PHPstorm
+/.phpstorm.meta.php
+/_ide_helper.php
+/.idea
+/.project
+
+# Misc.
+vendor/

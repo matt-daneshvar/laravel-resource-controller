@@ -1,0 +1,23 @@
+{
+    "name": "four13/resource-controller",
+    "description": "Generic resource controller\u001b[2~\u001b[C\u001b[C\u001b[C\u001b[for Laravel",
+    "license": "MIT",
+	"keywords": ["laravel", "controller", "resource controller"],
+	"authors": [
+		{
+			"name": "Matt Daneshvar",
+			"email": "matt@4thirteen.com.my"
+		}
+	],
+    "minimum-stability": "dev",
+    "require": {
+        "illuminate/support": "^5.2",
+        "illuminate/http": "^5.2",
+        "illuminate/routing": "^5.2"
+    },
+	"autoload": {
+		"psr-4": {
+			"Four13\\ResourceController\\": "src/"
+		}
+	}
+}
