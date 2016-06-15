@@ -7,24 +7,96 @@ use Illuminate\Routing\Controller;
 
 abstract class ResourceController extends Controller
 {
-    protected $model,
-        $name,
-        $viewsPath,
-        $itemsPerPage = 20;
+    /**
+     * The Eloquent model instance.
+     *
+     * @var \Illuminate\Database\Eloquent\Model
+     */
+    protected $model = null;
 
+    /**
+     * The model class name.
+     *
+     * @var string
+     */
+    protected $className = '';
+
+    /**
+     * The number of models to return for pagination.
+     *
+     * @var int|null
+     */
+    protected $perPage = 15;
+
+    /**
+     * Path to all views for this controller (dot-separated path from views directory).
+     *
+     * @var string
+     */
+    protected $viewsPath = '';
+
+    /**
+     * Views for different RESTful verbs.
+     *
+     * @var array
+     */
+    protected $views = [];
+
+    /**
+     * Validation rules.
+     *
+     * @var array
+     */
+    protected $rules = [];
+
+    /**
+     * Validation rules for store verb.
+     *
+     * @var array
+     */
+    protected $storeRules = null;
+
+    /**
+     * Validation rules for update verb.
+     *
+     * @var array
+     */
+    protected $updateRules = null;
+
+    /**
+     * Get a new instance of an Eloquent Model.
+     *
+     * @return \Illuminate\Database\Eloquent\Model
+     */
     abstract protected function newModel();
 
-    protected function rules()
+    /**
+     * Get view for the specified verb.
+     *
+     * @param $verb
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    protected function getViewByVerb($verb)
     {
-        return [];
+        return view(isset($this->views[$verb]) ? $this->views[$verb] : $this->viewsPath . '.' . $verb);
     }
 
+    /**
+     * ResourceController constructor.
+     */
     public function __construct()
     {
+        //Set model
         $this->model = $this->newModel();
-        $this->name = strtolower(class_basename(get_class($this->model)));
-        $this->plural = str_plural(strtolower($this->name));
-        $this->viewsPath = $this->plural;
+
+        //Set class name
+        $this->className = class_basename(get_class($this->model));
+
+        //Set views default path
+        if ($this->viewsPath == '') {
+            $this->viewsPath = str_plural(strtolower($this->className));
+        }
     }
 
     /**
@@ -34,9 +106,13 @@ abstract class ResourceController extends Controller
      */
     public function index()
     {
-        $items = $this->model->paginate($this->itemsPerPage);
+        if ($this->paginate) {
+            $items = $this->model->paginate($this->perPage);
+        } else {
+            $items = $this->all();
+        }
 
-        return view($this->viewsPath . '.' . 'index', [$this->plural => $items]);
+        return $this->getViewByVerb('index')->with([str_plural(strtolower($this->className)) => $items]);
     }
 
     /**
@@ -46,18 +122,20 @@ abstract class ResourceController extends Controller
      */
     public function create()
     {
-        return view($this->viewsPath . '.' . 'create');
+        return $this->getViewByVerb('create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $this->validate($request, $this->rules());
+        $rules = isset($this->storeRules) ? $this->storeRules : $this->rules;
+
+        $this->validate($request, $rules);
 
         $this->model->create($request->all());
 
@@ -67,39 +145,41 @@ abstract class ResourceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
         $item = $this->model->findOrFail($id);
 
-        return view($this->viewsPath . '.' . 'show', [$this->name => $item]);
+        return $this->getViewByVerb('show')->with([strtolower($this->className) => $item]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $item = $this->model->findOrFail($id);
 
-        return view($this->viewsPath . '.' . 'edit', [$this->name => $item]);
+        return $this->getViewByVerb('edit')->with([strtolower($this->className) => $item]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, $this->rules());
+        $rules = isset($this->updateRules) ? $this->updateRules : $this->rules;
+
+        $this->validate($request, $rules);
 
         $item = $this->model->findOrFail($id);
 
@@ -111,7 +191,7 @@ abstract class ResourceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -119,5 +199,7 @@ abstract class ResourceController extends Controller
         $item = $this->model->findOrFail($id);
 
         $item->delete();
+
+        return back();
     }
 }

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "0ba11955de3b671fefaa961f37c2c0cb",
-    "content-hash": "d7a50c9cab44dbc6531eac4d26441ecf",
+    "hash": "1f3fcd70c3c25665f1d78da6946f605f",
+    "content-hash": "f3283cedfc05c64eb619b2971fae9a6b",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -80,12 +80,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/container.git",
-                "reference": "c50dfbfbbc3289ce2f56bea0a9d75d54781edf2e"
+                "reference": "9c28486442b44f3b83eaf6a806c73b5f0eec2d7e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/container/zipball/c50dfbfbbc3289ce2f56bea0a9d75d54781edf2e",
-                "reference": "c50dfbfbbc3289ce2f56bea0a9d75d54781edf2e",
+                "url": "https://api.github.com/repos/illuminate/container/zipball/9c28486442b44f3b83eaf6a806c73b5f0eec2d7e",
+                "reference": "9c28486442b44f3b83eaf6a806c73b5f0eec2d7e",
                 "shasum": ""
             },
             "require": {
@@ -115,7 +115,7 @@
             ],
             "description": "The Illuminate Container package.",
             "homepage": "http://laravel.com",
-            "time": "2016-06-01 13:50:01"
+            "time": "2016-06-14 16:33:36"
         },
         {
             "name": "illuminate/contracts",
@@ -123,12 +123,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/contracts.git",
-                "reference": "cad66c5fde7c33b228f15a8c57c6f9589789f2b1"
+                "reference": "cd7242d6973d88f9eb53f916f70a7bd73dbbf9fe"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/contracts/zipball/cad66c5fde7c33b228f15a8c57c6f9589789f2b1",
-                "reference": "cad66c5fde7c33b228f15a8c57c6f9589789f2b1",
+                "url": "https://api.github.com/repos/illuminate/contracts/zipball/cd7242d6973d88f9eb53f916f70a7bd73dbbf9fe",
+                "reference": "cd7242d6973d88f9eb53f916f70a7bd73dbbf9fe",
                 "shasum": ""
             },
             "require": {
@@ -157,7 +157,67 @@
             ],
             "description": "The Illuminate Contracts package.",
             "homepage": "http://laravel.com",
-            "time": "2016-06-03 12:19:39"
+            "time": "2016-06-14 16:33:36"
+        },
+        {
+            "name": "illuminate/database",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/illuminate/database.git",
+                "reference": "313dc6cef1d3735df10ce99e32e8c52bc2885853"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/illuminate/database/zipball/313dc6cef1d3735df10ce99e32e8c52bc2885853",
+                "reference": "313dc6cef1d3735df10ce99e32e8c52bc2885853",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/container": "5.4.*",
+                "illuminate/contracts": "5.4.*",
+                "illuminate/support": "5.4.*",
+                "nesbot/carbon": "~1.20",
+                "php": ">=5.6.4"
+            },
+            "suggest": {
+                "doctrine/dbal": "Required to rename columns and drop SQLite columns (~2.4).",
+                "fzaninotto/faker": "Required to use the eloquent factory builder (~1.4).",
+                "illuminate/console": "Required to use the database commands (5.4.*).",
+                "illuminate/events": "Required to use the observers with Eloquent (5.4.*).",
+                "illuminate/filesystem": "Required to use the migrations (5.4.*).",
+                "illuminate/pagination": "Required to paginate the result set (5.4.*)."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.4-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Illuminate\\Database\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylorotwell@gmail.com"
+                }
+            ],
+            "description": "The Illuminate Database package.",
+            "homepage": "http://laravel.com",
+            "keywords": [
+                "database",
+                "laravel",
+                "orm",
+                "sql"
+            ],
+            "time": "2016-06-14 16:33:36"
         },
         {
             "name": "illuminate/http",
@@ -311,12 +371,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/illuminate/session.git",
-                "reference": "b366ce04f0a01a01e6f30c9daa1f5b233f5c9812"
+                "reference": "b8aa5a7dcc629798fac40e4a582aeb74e6c4969c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/illuminate/session/zipball/b366ce04f0a01a01e6f30c9daa1f5b233f5c9812",
-                "reference": "b366ce04f0a01a01e6f30c9daa1f5b233f5c9812",
+                "url": "https://api.github.com/repos/illuminate/session/zipball/b8aa5a7dcc629798fac40e4a582aeb74e6c4969c",
+                "reference": "b8aa5a7dcc629798fac40e4a582aeb74e6c4969c",
                 "shasum": ""
             },
             "require": {
@@ -353,7 +413,7 @@
             ],
             "description": "The Illuminate Session package.",
             "homepage": "http://laravel.com",
-            "time": "2016-06-10 22:50:37"
+            "time": "2016-06-14 16:33:36"
         },
         {
             "name": "illuminate/support",
@@ -724,12 +784,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-foundation.git",
-                "reference": "1409d13ba34e6c46380fe4230779721b31803124"
+                "reference": "6802c88a0d4998ccaca35df74a7f90124ccd03cc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/1409d13ba34e6c46380fe4230779721b31803124",
-                "reference": "1409d13ba34e6c46380fe4230779721b31803124",
+                "url": "https://api.github.com/repos/symfony/http-foundation/zipball/6802c88a0d4998ccaca35df74a7f90124ccd03cc",
+                "reference": "6802c88a0d4998ccaca35df74a7f90124ccd03cc",
                 "shasum": ""
             },
             "require": {
@@ -769,7 +829,7 @@
             ],
             "description": "Symfony HttpFoundation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-06 11:53:30"
+            "time": "2016-06-15 08:34:31"
         },
         {
             "name": "symfony/http-kernel",
@@ -993,12 +1053,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "f22e1fd24bd6c6b2f2237947d013d44f6784a455"
+                "reference": "3e0cc2ea85e0df7e11d002d9199288215a483d6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/f22e1fd24bd6c6b2f2237947d013d44f6784a455",
-                "reference": "f22e1fd24bd6c6b2f2237947d013d44f6784a455",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/3e0cc2ea85e0df7e11d002d9199288215a483d6c",
+                "reference": "3e0cc2ea85e0df7e11d002d9199288215a483d6c",
                 "shasum": ""
             },
             "require": {
@@ -1049,7 +1109,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2016-06-06 11:53:30"
+            "time": "2016-06-14 20:35:45"
         }
     ],
     "packages-dev": [],
