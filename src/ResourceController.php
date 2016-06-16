@@ -106,7 +106,7 @@ abstract class ResourceController extends Controller
      */
     public function index()
     {
-        if ($this->paginate) {
+        if ($this->perPage) {
             $items = $this->model->paginate($this->perPage);
         } else {
             $items = $this->all();
