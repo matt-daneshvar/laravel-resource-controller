@@ -7,6 +7,8 @@ use Illuminate\Routing\Controller;
 
 abstract class ResourceController extends Controller
 {
+    use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
+
     /**
      * The Eloquent model instance.
      *
