@@ -1,5 +1,5 @@
-# ResourceController
-Base resource controller implementation for Laravel 5.
+# RESTful Resource Controller
+Base RESTful resource controller implementation for Laravel 5.
 ## Installation
 Require the resource controller package using composer:
 ```
