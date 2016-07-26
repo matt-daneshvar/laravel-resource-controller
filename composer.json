@@ -14,8 +14,7 @@
         "illuminate/support": "^5.2",
         "illuminate/http": "^5.2",
         "illuminate/routing": "^5.2",
-		"illuminate/database": "^5.2",
-		"illuminate/foundation": "^5.2"
+		"illuminate/database": "^5.2"
     },
 	"autoload": {
 		"psr-4": {
