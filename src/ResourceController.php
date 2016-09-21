@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesResources;
 
 abstract class ResourceController extends Controller
 {
-    use AuthorizesRequests, AuthorizesResources, DispatchesJobs, ValidatesRequests;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     /**
      * The Eloquent model instance.
