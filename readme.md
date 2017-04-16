@@ -1,7 +1,7 @@
-# RESTful Resource Controller
-Base RESTful resource controller implementation for Laravel 5.
+# RESTful Verbs
+General implementation for RESTful verbs for Laravel 5.
 ## Installation
-Require the resource controller package using composer:
+Require the package using composer:
 ```
 composer require four13/resource-controller
 ```
