@@ -1,18 +1,9 @@
 <?php
 
-namespace Four13\ResourceController;
+namespace Four13\RestfulVerbs;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Auth\Access\AuthorizesResources;
-
-abstract class ResourceController extends Controller
+trait RestfulVerbs
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
-
     /**
      * The Eloquent model instance.
      *
@@ -70,7 +61,7 @@ abstract class ResourceController extends Controller
     protected $updateRules = null;
 
     /**
-     * Get a new instance of an Eloquent Model.
+     * Get a new instance of the controller's associated Eloquent Model.
      *
      * @return \Illuminate\Database\Eloquent\Model
      */
@@ -108,7 +99,7 @@ abstract class ResourceController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
@@ -124,7 +115,7 @@ abstract class ResourceController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function create()
     {
@@ -152,7 +143,7 @@ abstract class ResourceController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function show($id)
     {
@@ -165,7 +156,7 @@ abstract class ResourceController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function edit($id)
     {
