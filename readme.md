@@ -1,21 +1,21 @@
-# RESTful Verbs
-General implementation for RESTful verbs for Laravel 5.
+# Laravel REST Controller
+General implementation for Laravel RESTful controllers. Implemented for Laravel 5.
 ## Installation
 Require the package using composer:
 ```
-composer require four13/resource-controller
+composer require matt-daneshvar/rest
 ```
 ## 
-Use `RestfulVerbs`, implement the `newModel()` and optionally define validation `$rules`. 
+Use `Rest`, implement the `newModel()` and optionally define validation `$rules`. 
 ```php
 <?php
 
 use App/Models/Task;
-use Four13/RestfulVerbs/RestfulVerbs;
+use MattDaneshvar/Rest/Rest;
 
 class TasksController
 {
-  use RestfulVerbs;
+  use Rest;
 
   protected $rules = ['name' => 'required|max:200'];
 

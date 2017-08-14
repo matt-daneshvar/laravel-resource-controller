@@ -1,8 +1,8 @@
 <?php
 
-namespace Four13\RestfulVerbs;
+namespace MattDaneshvar\Rest;
 
-trait RestfulVerbs
+trait Rest
 {
     /**
      * The Eloquent model instance.
