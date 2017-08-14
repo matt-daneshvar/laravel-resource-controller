@@ -1,6 +1,6 @@
 {
-    "name": "four13/restful-verbs",
-    "description": "RESTful verbs general implementation for Laravel",
+    "name": "matt-daneshvar/rest",
+    "description": "General implementation for Laravel 5 RESTful controllers",
     "license": "MIT",
 	"keywords": ["laravel", "restful controller", "resource controller"],
 	"authors": [

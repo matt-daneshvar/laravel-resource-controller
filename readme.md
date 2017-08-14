@@ -1,5 +1,5 @@
 # Laravel REST Controller
-General implementation for Laravel RESTful controllers. Implemented for Laravel 5.
+General implementation for Laravel 5 RESTful controllers.
 ## Installation
 Require the package using composer:
 ```
