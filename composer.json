@@ -16,7 +16,7 @@
 	},
 	"autoload": {
 		"psr-4": {
-			"Four13\\RestfulVerbs\\": "src/"
+			"MattDaneshvar\\RestfulVerbs\\": "src/"
 		}
 	}
 }
