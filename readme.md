@@ -27,7 +27,7 @@ class TasksController
 ```
 The `TasksController` in the example above will now have implementation for generic RESTful verbs.  With the current defaults:
 * `TasksController@create` will return the `tasks.create` view.
-* `TasksController@store` will validate request against `$rules` and persist a `Task` object to the storage. 
+* `TasksController@store` will validate the request against the `$rules` and persist a `Task` object. 
 * `TasksController@edit` will retrieve the specified model by `id` and return the `tasks.edit` view with `['task' => $task]` parameters.
 * etc.
 
