@@ -1,22 +1,29 @@
 {
-    "name": "matt-daneshvar/rest",
-    "description": "General implementation for Laravel 5 RESTful controllers",
-    "license": "MIT",
+    "name": "matt-daneshvar/laravel-resource-controller",
+    "description": "General implementation for Laravel 5 resource controllers",
 	"keywords": ["laravel", "restful controller", "resource controller"],
+	"type": "library",
+	"license": "MIT",
 	"authors": [
 		{
 			"name": "Matt Daneshvar",
-			"email": "matt@4thirteen.com.my"
+			"email": "matt.daneshvar@gmail.com"
 		}
 	],
-	"minimum-stability": "dev",
-	"require": {
+	"require-dev": {
+		"phpunit/phpunit": "^8.2",
+		"orchestra/testbench": "^3.8",
 		"illuminate/http": "5.*",
 		"illuminate/database": "5.*"
 	},
 	"autoload": {
 		"psr-4": {
-			"MattDaneshvar\\Rest\\": "src/"
+			"MattDaneshvar\\ResourceController\\": "src/"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"MattDaneshvar\\ResourceController\\Tests\\": "tests/"
 		}
 	}
 }

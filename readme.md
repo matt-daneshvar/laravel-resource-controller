@@ -1,4 +1,4 @@
-# REST Controller for Laravel 5.x
+# Resource Controller for Laravel 5.x
 General implementation for Laravel 5.x resource controllers.
 
 By assuming a few conventions this package takes care of the repetitive implementation of 
@@ -8,28 +8,26 @@ fully customize and extend to your liking.
 ## Installation
 Require the package using composer:
 ```
-composer require matt-daneshvar/rest
+composer require matt-daneshvar/laravel-resource-controller
 ```
 ## Usage
-Include the `Rest` trait in your controller, and specify a `$resource`. Optionally define a `$rules` 
+Extend the `ResourceController`, and specify a `$resource`. Optionally define a `$rules` 
 property to enforce validation before `store` and `update` operations.
 
 ```php
 <?php
 
 use App\Task;
-use MattDaneshvar\Rest\Rest;
+use MattDaneshvar\ResourceController\ResourceController;
 
-class TasksController
+class TasksController extends ResourceController
 {
-  use Rest;
-
   protected $resource = Task::class;
 
   protected $rules = ['name' => 'required|max:200'];
 }
 ```
-The `TasksController` in the example above will now have general implementation for all RESTful verbs. 
+The `TasksController` in the example above will now have general implementation for all CRUD actions. 
 That includes:
 * A `create` method that returns the `tasks.create` view.
 * A `show` method that returns the `tasks.show` view injected with the relevant `Task` model.
@@ -51,7 +49,7 @@ Route::resource('tasks', 'TasksController');
 ``` 
 
 ### Limiting the exposed CRUD operations
-While the `Rest` trait automatically adds all CRUD operations to your controller, you may wish 
+While extending `ResourceController` automatically includes all CRUD operations in your controller, you may wish 
 to limit the available operations available for your specific resource. You could achieve that
 by limiting the routes you expose in your application:
 ```php
@@ -62,14 +60,12 @@ Route::resource('tasks', 'TasksController', ['only' => ['index', 'show']]);
 Most real-world applications would validate `store` and `update` requests before 
 persisting anything to the database. 
 
-Specifying a `$rules` property on your controller, informs the `Rest` trait to validate user's 
+Specifying a `$rules` property on your controller, informs the `ResourceController` to validate user's 
 request against those rules in both `store` and `update` operations.
 
 ```php
-class TasksController
+class TasksController extends ResourceController
 {
-  use Rest;
-
   protected $resource = Task::class;
 
   protected $rules = ['name' => 'required|max:200'];
@@ -79,10 +75,8 @@ class TasksController
 If you wish to use different rules for `store` and `update` operations, you may specify them separately:
 
 ```php
-class TasksController
+class TasksController extends ResourceController
 {
-  use Rest;
-
   protected $resource = Task::class;
 
   protected $storeRules = ['name' => 'required|max:200'];
@@ -93,13 +87,11 @@ class TasksController
 
 ## Pagination
 In most situations, your application's `index` would use pagination instead of dumping your models into 
-the view all at once. The `Rest` trait assumes `20` items per page. To change this number define the 
+the view all at once. The `ResourceController` assumes `20` items per page. To change this number define the 
 `$perPage` attribute, or set it to `null` to disable pagination altogether.
 ```php
-class TasksController
+class TasksController extends ResourceController
 {
-  use Rest;
-
   protected $resource = Task::class;
 
   protected $perPage = 10;
@@ -109,32 +101,59 @@ class TasksController
 ## Other configurations
 While assuming a set of default conventions with sensible defaults to minimize code repetition
 in most cases, this package is also packed with a bunch of configuration options to allow you 
-customize your `Rest` as and when needed.
+override the default behaviour when needed.
 
 ```php
-class TasksController
+class TasksController extends ResourceController
 {
-  use Rest;
+  /**
+   * The resource class name.
+   *
+   * @var string
+   */
+  protected $resource = '';
 
-  protected $resource = Task::class;
+  /**
+   * The number of models to return for pagination.
+   *
+   * @var int|null
+   */
+  protected $perPage = 20;
 
-  protected $rules = ['name' => 'required|max:200'];
+  /**
+   * Path to all views for this controller (dot-separated path from views directory).
+   *
+   * @var string
+   */
+  protected $viewsPath = null;
 
-  protected $storeRules = ['name' => 'required|max:200'];
-  
-  protected $updateRules = ['name' => 'required|max:200'];
-  
-  protected $attributes = ['name'];
-  
-  protected $storeAttributes = ['name'];
-  
-  protected $updateAttributes = ['name'];
-  
-  protected $viewsDirectory = 'tasks';
-  
-  protected $views = [
-    'create' => 'tasks.new'
-  ];
+  /**
+   * Views for different resource actions.
+   *
+   * @var array
+   */
+  protected $views = [];
+
+  /**
+   * Validation rules.
+   *
+   * @var array
+   */
+  protected $rules = [];
+
+  /**
+   * Validation rules for store action.
+   *
+   * @var array
+   */
+  protected $storeRules = null;
+
+  /**
+   * Validation rules for update action.
+   *
+   * @var array
+   */
+  protected $updateRules = null;
 }
 ```
 
