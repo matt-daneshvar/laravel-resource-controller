@@ -10,8 +10,7 @@ class ResourceControllerCreateTest extends BaseCase
     /** @test */
     public function it_returns_the_create_view()
     {
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
@@ -22,5 +21,3 @@ class ResourceControllerCreateTest extends BaseCase
         $this->assertStringContainsString('create a task', $response);
     }
 }
-
-

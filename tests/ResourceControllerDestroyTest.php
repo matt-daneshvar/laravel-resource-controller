@@ -2,7 +2,6 @@
 
 namespace MattDaneshvar\ResourceController\Tests;
 
-use Illuminate\Http\Request;
 use MattDaneshvar\ResourceController\ResourceController;
 use MattDaneshvar\ResourceController\Tests\Utilities\Task;
 
@@ -13,8 +12,7 @@ class ResourceControllerDestroyTest extends BaseCase
     {
         $task = $this->createTasks(1)->first();
 
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
@@ -25,5 +23,3 @@ class ResourceControllerDestroyTest extends BaseCase
         $this->assertDatabaseMissing('tasks', ['id' => $task->id]);
     }
 }
-
-
