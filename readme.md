@@ -1,4 +1,5 @@
 # Resource Controller for Laravel 5.x
+
 General implementation for Laravel 5.x resource controllers.
 
 By assuming a few conventions this package takes care of the repetitive implementation of 
@@ -11,7 +12,7 @@ Require the package using composer:
 composer require matt-daneshvar/laravel-resource-controller
 ```
 ## Usage
-Extend the `ResourceController`, and specify a `$resource`. Optionally define a `$rules` 
+Extend the `ResourceController` and specify a `$resource`. Optionally define a `$rules` 
 property to enforce validation before `store` and `update` operations.
 
 ```php
