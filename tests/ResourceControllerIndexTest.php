@@ -12,8 +12,7 @@ class ResourceControllerIndexTest extends BaseCase
     {
         $tasks = $this->createTasks(3);
 
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
@@ -31,8 +30,7 @@ class ResourceControllerIndexTest extends BaseCase
     {
         $tasks = $this->createTasks(5);
 
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
@@ -51,8 +49,7 @@ class ResourceControllerIndexTest extends BaseCase
     {
         $tasks = $this->createTasks(5);
 
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
@@ -66,5 +63,3 @@ class ResourceControllerIndexTest extends BaseCase
         $this->assertStringContainsString($tasks->last()->name, $response);
     }
 }
-
-

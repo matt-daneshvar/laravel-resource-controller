@@ -13,8 +13,7 @@ class ResourceControllerUpdateTest extends BaseCase
     {
         $task = $this->createTasks(1)->first();
 
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
@@ -30,14 +29,13 @@ class ResourceControllerUpdateTest extends BaseCase
     {
         $task = $this->createTasks(1)->first();
 
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
 
             protected $rules = [
-                'name' => 'required'
+                'name' => 'required',
             ];
         };
 
@@ -51,18 +49,17 @@ class ResourceControllerUpdateTest extends BaseCase
     {
         $task = $this->createTasks(1)->first();
 
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
 
             protected $rules = [
-                'name' => 'required'
+                'name' => 'required',
             ];
 
             protected $updateRules = [
-                'name' => 'numeric'
+                'name' => 'numeric',
             ];
         };
 
@@ -71,5 +68,3 @@ class ResourceControllerUpdateTest extends BaseCase
         $controller->update($task->id, new Request(['name' => 'Test Name']));
     }
 }
-
-
