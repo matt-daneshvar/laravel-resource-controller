@@ -4,8 +4,16 @@
 /.idea
 /.project
 
-# Misc.
-vendor/
+# Phpunit
+.phpunit.result.cache
 
 # Composer
+vendor/
+composer.lock
+
+
+
+build/
+vendor/
+.idea/
 composer.lock
