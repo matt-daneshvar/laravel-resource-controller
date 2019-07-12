@@ -11,8 +11,7 @@ class ResourceControllerStoreTest extends BaseCase
     /** @test */
     public function it_persists_a_new_model()
     {
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
@@ -26,14 +25,13 @@ class ResourceControllerStoreTest extends BaseCase
     /** @test */
     public function it_validates_store_input()
     {
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
 
             protected $rules = [
-                'name' => 'required'
+                'name' => 'required',
             ];
         };
 
@@ -45,18 +43,17 @@ class ResourceControllerStoreTest extends BaseCase
     /** @test */
     public function it_validates_store_input_using_specific_store_rules()
     {
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
 
             protected $rules = [
-                'name' => 'required'
+                'name' => 'required',
             ];
 
             protected $storeRules = [
-                'name' => 'numeric'
+                'name' => 'numeric',
             ];
         };
 
@@ -65,5 +62,3 @@ class ResourceControllerStoreTest extends BaseCase
         $controller->store(new Request(['name' => 'Test Task']));
     }
 }
-
-

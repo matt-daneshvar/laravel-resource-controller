@@ -2,9 +2,9 @@
 
 namespace MattDaneshvar\ResourceController\Tests;
 
+use Orchestra\Testbench\TestCase;
 use Illuminate\Database\Eloquent\Collection;
 use MattDaneshvar\ResourceController\Tests\Utilities\Task;
-use Orchestra\Testbench\TestCase;
 
 class BaseCase extends TestCase
 {
@@ -15,9 +15,9 @@ class BaseCase extends TestCase
     {
         parent::setUp();
 
-        $this->loadMigrationsFrom(__DIR__ . '/database/migrations');
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
 
-        $this->loadViewsFrom(__DIR__ . '/resources/views', 'tests');
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'tests');
     }
 
     /**
@@ -47,5 +47,3 @@ class BaseCase extends TestCase
         return $tasks;
     }
 }
-
-

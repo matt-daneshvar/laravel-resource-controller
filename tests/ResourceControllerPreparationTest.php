@@ -10,8 +10,7 @@ class ResourceControllerPreparationTest extends BaseCase
     /** @test */
     public function it_assumes_resource_name_based_on_the_specified_model_class()
     {
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             public function getResourceName()
@@ -26,8 +25,7 @@ class ResourceControllerPreparationTest extends BaseCase
     /** @test */
     public function it_assumes_views_path_based_on_the_specified_model_class()
     {
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             public function getViewsPath()
@@ -39,5 +37,3 @@ class ResourceControllerPreparationTest extends BaseCase
         $this->assertEquals('tasks', $controller->getViewsPath());
     }
 }
-
-
