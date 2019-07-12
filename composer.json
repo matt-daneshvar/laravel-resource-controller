@@ -1,5 +1,5 @@
 {
-    "name": "matt-daneshvar/laravel-resource-controller",
+    "name": "matt-daneshvar/rest",
     "description": "General implementation for Laravel 5 resource controllers",
 	"keywords": ["laravel", "restful controller", "resource controller"],
 	"type": "library",
