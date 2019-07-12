@@ -13,7 +13,7 @@ fully customize and extend to your liking.
 ## Installation
 Require the package using composer:
 ```
-composer require matt-daneshvar/laravel-resource-controller
+composer require matt-daneshvar/rest
 ```
 ## Usage
 Extend the `ResourceController` and specify a `$resource`. Optionally define a `$rules` 
