@@ -2,11 +2,11 @@
 
 namespace MattDaneshvar\ResourceController;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 abstract class ResourceController extends Controller
 {
@@ -84,7 +84,7 @@ abstract class ResourceController extends Controller
      */
     protected function getViewByAction($action)
     {
-        return view(isset($this->views[$action]) ? $this->views[$action] : $this->viewsPath . '.' . $action);
+        return view(isset($this->views[$action]) ? $this->views[$action] : $this->viewsPath.'.'.$action);
     }
 
     /**

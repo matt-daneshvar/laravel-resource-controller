@@ -12,8 +12,7 @@ class ResourceControllerShowTest extends BaseCase
     {
         $task = $this->createTasks(1)->first();
 
-        $controller = new class extends ResourceController
-        {
+        $controller = new class extends ResourceController {
             protected $resource = Task::class;
 
             protected $viewsPath = 'tests::tasks';
@@ -24,5 +23,3 @@ class ResourceControllerShowTest extends BaseCase
         $this->assertStringContainsString("showing {$task->name}", $response);
     }
 }
-
-
