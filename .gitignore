@@ -6,14 +6,8 @@
 
 # Phpunit
 .phpunit.result.cache
+build/
 
 # Composer
 vendor/
-composer.lock
-
-
-
-build/
-vendor/
-.idea/
 composer.lock
