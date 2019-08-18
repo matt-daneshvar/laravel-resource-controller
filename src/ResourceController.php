@@ -31,7 +31,7 @@ abstract class ResourceController extends Controller
      *
      * @var string
      */
-    protected $resourceName = '';
+    protected $resourceName = null;
 
     /**
      * The number of models to return for pagination.
@@ -96,7 +96,7 @@ abstract class ResourceController extends Controller
         $this->model = new $this->resource();
 
         //Set resource name.
-        $this->resourceName = strtolower(class_basename($this->resource));
+        $this->resourceName = $this->resourceName ?? strtolower(class_basename($this->resource));
 
         //Set views default path.
         if ($this->viewsPath === null) {
@@ -151,12 +151,12 @@ abstract class ResourceController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  int|string $key
      * @return \Illuminate\Contracts\View\View
      */
-    public function show($id)
+    public function show($key)
     {
-        $item = $this->model->findOrFail($id);
+        $item = $this->findOrFail($key);
 
         return $this->getViewByAction('show')->with([$this->resourceName => $item]);
     }
@@ -164,12 +164,12 @@ abstract class ResourceController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  int|string $key
      * @return \Illuminate\Contracts\View\View
      */
-    public function edit($id)
+    public function edit($key)
     {
-        $item = $this->model->findOrFail($id);
+        $item = $this->findOrFail($key);
 
         return $this->getViewByAction('edit')->with([$this->resourceName => $item]);
     }
@@ -178,17 +178,17 @@ abstract class ResourceController extends Controller
      * Update the specified resource in storage.
      *
      * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param int|string $key
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function update($id, Request $request)
+    public function update($key, Request $request)
     {
         $rules = isset($this->updateRules) ? $this->updateRules : $this->rules;
 
         $this->validate($request, $rules);
 
-        $item = $this->model->findOrFail($id);
+        $item = $this->findOrFail($key);
 
         $item->update($request->all());
 
@@ -198,15 +198,26 @@ abstract class ResourceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  int|string $key
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($key)
     {
-        $item = $this->model->findOrFail($id);
+        $item = $this->findOrFail($key);
 
         $item->delete();
 
         return back();
+    }
+
+    /**
+     * Find model based on the specified route key name.
+     *
+     * @param string $key
+     * @return \Illuminate\Database\Eloquent\Model
+     */
+    protected function findOrFail($key)
+    {
+        return $this->model->where($this->model->getRouteKeyName(), $key)->firstOrFail();
     }
 }
