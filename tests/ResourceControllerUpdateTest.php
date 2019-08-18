@@ -5,6 +5,7 @@ namespace MattDaneshvar\ResourceController\Tests;
 use Illuminate\Http\Request;
 use MattDaneshvar\ResourceController\ResourceController;
 use MattDaneshvar\ResourceController\Tests\Utilities\Task;
+use MattDaneshvar\ResourceController\Tests\Utilities\TaskWithCustomRouteKeyName;
 
 class ResourceControllerUpdateTest extends BaseCase
 {
@@ -20,6 +21,24 @@ class ResourceControllerUpdateTest extends BaseCase
         };
 
         $controller->update($task->id, new Request(['name' => 'Updated Task']));
+
+        $this->assertDatabaseHas('tasks', ['id' => $task->id, 'name' => 'Updated Task']);
+    }
+
+    /** @test */
+    public function it_updates_the_specified_model_with_custom_route_key_names()
+    {
+        $task = TaskWithCustomRouteKeyName::create(['name' => 'Do groceries!', 'slug' => 'do-groceries']);
+
+        $controller = new class extends ResourceController {
+            protected $resource = TaskWithCustomRouteKeyName::class;
+
+            protected $resourceName = 'task';
+
+            protected $viewsPath = 'tests::tasks';
+        };
+
+        $controller->update($task->slug, new Request(['name' => 'Updated Task']));
 
         $this->assertDatabaseHas('tasks', ['id' => $task->id, 'name' => 'Updated Task']);
     }
