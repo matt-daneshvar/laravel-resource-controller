@@ -1,10 +1,10 @@
-# Resource Controller for Laravel 5.x
+# Resource Controller for Laravel
 ![Packagist Version](https://img.shields.io/packagist/v/matt-daneshvar/rest.svg)
 [![Build Status](https://travis-ci.org/matt-daneshvar/laravel-resource-controller.svg?branch=master)](https://travis-ci.org/matt-daneshvar/laravel-resource-controller)
 ![GitHub](https://img.shields.io/github/license/matt-daneshvar/laravel-resource-controller.svg)
   
   
-General implementation for Laravel 5.x resource controllers.
+General implementation for Laravel resource controllers.
 
 By assuming a few conventions this package takes care of the repetitive implementation of 
 the CRUD (create, read, update, and delete) operations on a base controller which you can 
